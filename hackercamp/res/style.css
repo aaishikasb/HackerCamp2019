@@ -1,0 +1,18 @@
+.card {
+    box-shadow: 0 5px 10px #272626;
+    padding: 10px 10px;
+}
+
+.md-form {
+    font-family: 'Poppins:900', sans-serif;
+}
+
+strong{
+    color: #ffffff;
+    font-family: 'Poppins:900', sans-serif;
+}
+
+#subbtn {
+    font-family: 'Poppins:900', sans-serif;
+}
+

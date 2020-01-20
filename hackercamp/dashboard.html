@@ -1,0 +1,182 @@
+<html>
+    <head>
+        <title>Eagle Assist - Dashboard</title>
+        <link href="https://fonts.googleapis.com/css?family=Poppins:400,600,700,900&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+        <link rel="stylesheet" href="style.css">
+        <script>
+                window.onload = function () {
+                    var dps1 = [];
+                    var dps2 = [];
+                    var chart1 = new CanvasJS.Chart("chartContainer1", {
+                        //backgroundColor: "#4CAF50",
+                        exportEnabled: true,
+                        title :{
+                            text: "LOCALITY 1"
+                        },
+                        axisX: {
+                            title: "Time",
+                            titleFontColor: "darkMagenta",
+                            titleFontWeight: "bold",
+                        },
+                        axisY: {
+                            includeZero: false,
+                            title: "Rank",
+                            titleFontColor: "darkMagenta",
+                            titleFontWeight: "bold",
+                        },
+                        toolTip: {
+                            shared: true
+                        },
+                        legend: {
+                            cursor: "pointer",
+                            verticalAlign: "top",
+                            horizontalAlign: "center",
+                            dockInsidePlotArea: true,
+                            itemclick: toogleDataSeries
+                        },
+                        data: [
+                            {
+                                type: "splineArea",
+                                name: "L1",
+                                showInLegend: true,
+                                lineThickness: 3,
+                                color: "dodgerBlue",
+                                fillOpacity: .2,
+                                markerSize: 0,
+                                dataPoints: dps1 
+                            },
+                            {
+                                type: "splineArea",
+                                name: "L2",
+                                showInLegend: true,
+                                lineThickness: 3,
+                                color: "seaGreen",
+                                fillOpacity: .2,
+                                markerSize: 0,
+                                dataPoints: dps2 
+                            },
+                            
+                        }]
+                    });
+                    var xVal = 0;
+                    var yVal = 100;
+                    var updateInterval = 2000;
+                    var dataLength = 50; // number of dataPoints visible at any point
+                    var updateChart1 = async function (count) {
+                        count = count || 1;
+                        // count is number of times loop runs to generate random dataPoints.
+                        for (var j = 0; j < count; j++) {	
+                            let url="http://192.168.43.171/webapi.php"
+                            let response = await fetch(url);
+                            let json= await response.json();
+                            yVal = parseInt(json['enose']) ;
+                            dps1.push({
+                                x: xVal,
+                                y: yVal
+                            });
+                            xVal++;
+                        }
+                        if (dps1.length > dataLength) {
+                            dps1.shift();
+                        }
+                        chart1.render();
+                    };
+                    var updateChart2 = async function (count) {
+                        count = count || 1;
+                        // count is number of times loop runs to generate random dataPoints.
+                        for (var j = 0; j < count; j++) {	
+                
+                            let url="http://192.168.43.171/webapi.php"
+                            let response = await fetch(url);
+                            let json= await response.json();
+                            yVal = parseInt(json['enose']) ;
+                            dps2.push({
+                                x: xVal,
+                                y: yVal
+                            });
+                            xVal++;
+                        }
+                        if (dps2.length > dataLength) {
+                            dps2.shift();
+                        }
+            
+                        chart2.render();
+                    };
+                }
+                    </script>
+    </head>
+
+
+    <body onload="startTime()">
+        <!-- Nav -->
+              <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+                    <a class="navbar-brand" href="#">
+                            <img src="/logo.png" width="30" height="30" class="d-inline-block align-top" alt="">
+                            Eagle Assist
+                          </a>
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                      <span class="navbar-toggler-icon"></span>
+                    </button>
+                  
+                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                      <ul class="navbar-nav mr-auto">
+                        <li class="nav-item active">
+                          <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+                        </li>
+                        <li class="nav-item">
+                          <a class="nav-link" href="#">Update</a>
+                        </li>
+                      </ul>
+                      <button class="btn btn-light my-2 my-sm-0" type="submit">Logout</button>
+                    </div>
+                  </nav>
+        <!-- Nav Ends-->
+                  <div class="col-10">
+                        <h1 class="display-4 align-left" style="padding: 20px 0px;">Dashboard</h1>
+                    </div>
+        <center>
+        <div class="col-12">
+                    <!-- Table-->
+        <table class="table table-hover table-bordered">
+                <caption id="txt"></caption>
+                <thead class="thead-dark">
+                  <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Vital 1</th>
+                    <th scope="col">Vital 2</th>
+                    <th scope="col">Vital 3</th>
+                    <th scope="col">Life Rating</th>
+                    <th scope="col">Live Chart</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr class="">
+                    <th scope="row">1</th>
+                    <td>X</td>
+                    <td>X</td>
+                    <td>X</td>
+                    <td>X</td>
+                    <td><div id="chartContainer" style="height: 150px; width: 100%;"></div></td>
+                  </tr>
+                  <tr class="">
+                    <th scope="row">2</th>
+                    <td>Y</td>
+                    <td>Y</td>
+                    <td>Y</td>
+                    <td>Y</td>
+                    <td><figure class="highcharts-figure">
+                            <div id="container"></div>
+                          </figure></td>
+                  </tr>
+                </tbody>
+              </table>
+              </div>
+             </center>
+             <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>      
+</body>
+</html>
+           

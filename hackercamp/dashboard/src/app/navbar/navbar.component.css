@@ -1,0 +1,8 @@
+.menu{
+    font-size: 1.2rem !important;
+    margin-left: 25px;
+}
+
+.menu .active{
+    color: black;
+}
