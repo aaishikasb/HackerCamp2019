@@ -1,0 +1,105 @@
+<html>
+  <head>
+    <title>Eagle Assist</title>
+    <link
+      href="https://fonts.googleapis.com/css?family=Poppins:400,600,700,900&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+      integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+      crossorigin="anonymous"
+    />
+    <script
+      src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+      integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+      integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+      crossorigin="anonymous"
+    ></script>
+    <link rel="stylesheet" href="/style.css" />
+  </head>
+
+  <body>
+    <div class="container-fuid" style="display: block;">
+      <div class="row">
+        <div class="col-lg-6" style="margin-top: 100px;">
+          <center><img src="/logo-v1.svg" width="60%" alt="Logo" /></center>
+        </div>
+        <div class="col-lg-6" style="margin-top: 100px;">
+          <center>
+            <div class="card col-lg-8">
+              <h5 class="card-header bg-primary text-center py-4">
+                <strong><b>Sign In</b></strong>
+              </h5>
+              <h6>Restricted Access</h6>
+              <br /><br />
+
+              <!--Card content-->
+              <div class="card-body px-lg-5 pt-0">
+                <!-- Form -->
+                <form
+                  class="text-center"
+                  style="color: #757575;"
+                  action="http://localhost:8000/login"
+                  method="POST"
+                >
+                  <!-- Email -->
+                  <div class="md-form">
+                    <label for="materialLoginFormEmail"><b>Username</b></label>
+                    <input
+                      type="text"
+                      name="user"
+                      id="materialLoginFormEmail"
+                      class="form-control"
+                      placeholder="Enter Username"
+                    />
+                  </div>
+                  <br />
+                  <!-- Password -->
+                  <div class="md-form">
+                    <label for="materialLoginFormPassword"
+                      ><b>Password</b></label
+                    >
+                    <input
+                      type="password"
+                      name="pass"
+                      id="materialLoginFormPassword"
+                      class="form-control"
+                      placeholder="Enter Password"
+                    />
+                  </div>
+
+                  <br /><br />
+
+                  <!-- Sign in button -->
+                  <button
+                    class="btn btn-outline-info btn-rounded btn-block my-4 waves-effect z-depth-0"
+                    type="submit"
+                    id="subbtn"
+                  >
+                    <b>Sign in</b>
+                  </button>
+                </form>
+                <!-- Form -->
+                <br />
+              </div>
+            </div>
+          </center>
+        </div>
+      </div>
+    </div>
+    <nav
+      class="navbar navbar-dark bg-primary"
+      style="bottom: 0; position: fixed; width: 100%;"
+    >
+      <div class="container" width="100%">
+        <a class="navbar-brand" href="#">Team Novus [T-55]</a>
+      </div>
+    </nav>
+  </body>
+</html>
