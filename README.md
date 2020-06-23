@@ -1,6 +1,7 @@
 # Innovaccer HackerCamp 2019
 
 Official Submission by Team Novus at Innovaccer's Annual HackerCamp.
+
 ![Collaborators](https://img.shields.io/badge/collaborators-4-red)
 ![Status](https://img.shields.io/badge/status-complete-green)
 ![Issues](https://img.shields.io/badge/issues-0-blue)
@@ -14,7 +15,7 @@ Official Submission by Team Novus at Innovaccer's Annual HackerCamp.
 
 ## Collaborators
 
-[Aaishika S Bhattacharya](https://www.github.com/aaishikasb)
-[Aniruddha Chatterjee](https://www.github.com/ruddha2001)
-[Gita Alekhya Paul](https://www.github.com/gitaalekhyapaul)
+[Aaishika S Bhattacharya](https://www.github.com/aaishikasb)  
+[Aniruddha Chatterjee](https://www.github.com/ruddha2001)  
+[Gita Alekhya Paul](https://www.github.com/gitaalekhyapaul)  
 [Snehil](https://www.github.com/sneakySensei)
